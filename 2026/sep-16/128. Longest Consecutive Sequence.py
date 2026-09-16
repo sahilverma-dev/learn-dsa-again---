@@ -28,6 +28,8 @@ class Solution:
                 length = 0
                 while (i+length) in numsSet:
                     # this loop only starts when i is the first number of a consecutive sequence.
+                    # The `while` loop is **not O(1)** by itself; for a consecutive sequence of length `k`, it can run `k` times, making it **O(k)**. However, the overall algorithm is still **O(n)** because the `if (i - 1) not in numsSet` condition ensures that the `while` loop only starts at the beginning of a sequence, and each number is visited by a `while` loop at most once across the entire algorithm. So even though one `while` loop may run many times, the **total number of `while` iterations across all sequences is at most `n`**, giving `O(n)` overall time (with `O(1)` average set lookups).
+
                     length += 1
                 ans = max(ans, length)
 
