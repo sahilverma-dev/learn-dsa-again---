@@ -28,6 +28,7 @@ class Solution:
                 length = 0
                 while (i+length) in numsSet:
                     # this loop only starts when i is the first number of a consecutive sequence.
+                    # This solution is **O(n)** because although there is a `for` loop containing a `while` loop, the `while` loop does **not** run for every element. The `if (i - 1) not in numsSet` condition ensures that we only start counting when `i` is the beginning of a consecutive sequence. Once we start, the `while` loop visits each number in that sequence exactly once, and across all sequences, each number can be visited by the `while` loop at most once. Therefore, the total work is `O(n)` for creating the set + `O(n)` for the outer loop + `O(n)` total across all `while` loops = **O(n)** overall, with **O(n)** extra space for the set.
                     # The `while` loop is **not O(1)** by itself; for a consecutive sequence of length `k`, it can run `k` times, making it **O(k)**. However, the overall algorithm is still **O(n)** because the `if (i - 1) not in numsSet` condition ensures that the `while` loop only starts at the beginning of a sequence, and each number is visited by a `while` loop at most once across the entire algorithm. So even though one `while` loop may run many times, the **total number of `while` iterations across all sequences is at most `n`**, giving `O(n)` overall time (with `O(1)` average set lookups).
 
                     length += 1
